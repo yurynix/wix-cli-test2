@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@wix/cli": "^1.1.52"
+  }
+}
