@@ -1,5 +1,7 @@
 {
+  "name": "wix-cli-test2",
   "dependencies": {
     "@wix/cli": "^1.1.52"
-  }
+  },
+  "packageManager": "yarn@4.5.3"
 }
