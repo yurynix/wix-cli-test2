@@ -1634,9 +1634,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/cli@npm:^1.1.52":
-  version: 1.1.52
-  resolution: "@wix/cli@npm:1.1.52"
+"@wix/cli-astro-internal@https://cdn.dev.wixpress.com/@wix/cli-astro-internal/d956514b1bac2d7bd40da3e9ebf0bee2362ca44b1074ce0c62a253e8.tar.gz":
+  version: 0.0.0-d956514b1bac2d7bd40da3e9ebf0bee2362ca44b1074ce0c62a253e8
+  resolution: "@wix/cli-astro-internal@https://cdn.dev.wixpress.com/@wix/cli-astro-internal/d956514b1bac2d7bd40da3e9ebf0bee2362ca44b1074ce0c62a253e8.tar.gz"
+  checksum: 10c0/224d69bb0cfdb4ce2cfd4730bc5141cb2a449ab504c10f1f57024223c1bab9ef5c6e874a0533866f85e69b93f32a0dc534dcb7b3863f9925ad6b8a234a5e4bc6
+  languageName: node
+  linkType: hard
+
+"@wix/cli@https://cdn.dev.wixpress.com/@wix/cli/f823da3d21f8ae551727936b4f1fe8a036a51301f569e8227d668ba8.tar.gz":
+  version: 0.0.0-f823da3d21f8ae551727936b4f1fe8a036a51301f569e8227d668ba8
+  resolution: "@wix/cli@https://cdn.dev.wixpress.com/@wix/cli/f823da3d21f8ae551727936b4f1fe8a036a51301f569e8227d668ba8.tar.gz"
   dependencies:
     fsevents: "npm:^2.3.2"
     node-gyp: "npm:^8.4.1"
@@ -1645,7 +1652,7 @@ __metadata:
       optional: true
   bin:
     wix: bin/wix.cjs
-  checksum: 10c0/5a3fa032c287436ef05b0dabcc792f03230134af043245c9e5e0d5f61c8cd41428eba6bd759ba178da669a6214d77ff0c1f95e114339f8a95366e14dcf067747
+  checksum: 10c0/8c2ef47981af48a05fbc483319a319079dfbf3fec37a251f3bc9d2483d998f3063553236948f6d16998b868a8c9c758bf8d2b4860ab7ca8bf851275c75eea669
   languageName: node
   linkType: hard
 
@@ -2786,6 +2793,29 @@ __metadata:
   checksum: 10c0/756c08334f95e290f03ab2141b034514af1311ef7b62f15b0f5ea6f8f3033ee9cc6a8f1c3e9ff4803d4d723cf992aa61460acf5fce884936972db966b1da287d
   languageName: node
   linkType: hard
+
+"astro-vercel-commerce@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "astro-vercel-commerce@workspace:."
+  dependencies:
+    "@astrojs/check": "npm:^0.9.4"
+    "@astrojs/react": "npm:^3.6.2"
+    "@astrojs/tailwind": "npm:^5.1.2"
+    "@tailwindcss/container-queries": "npm:^0.1.1"
+    "@tailwindcss/typography": "npm:^0.5.15"
+    "@wix/astro-internal": "https://cdn.dev.wixpress.com/@wix/astro-internal/4a6e599e853b4fab9f4d36484b7ae498eb48d975c9967be66ae28fba.tar.gz"
+    "@wix/cli": "https://cdn.dev.wixpress.com/@wix/cli/f823da3d21f8ae551727936b4f1fe8a036a51301f569e8227d668ba8.tar.gz"
+    "@wix/cli-astro-internal": "https://cdn.dev.wixpress.com/@wix/cli-astro-internal/d956514b1bac2d7bd40da3e9ebf0bee2362ca44b1074ce0c62a253e8.tar.gz"
+    "@wix/data": "npm:1.0.168"
+    "@wix/ecom": "npm:1.0.806"
+    "@wix/redirects": "npm:1.0.60"
+    "@wix/sdk": "npm:^1.14.2"
+    "@wix/stores": "npm:1.0.280"
+    astro: "npm:4.16.10"
+    tailwindcss: "npm:^3.4.14"
+    typescript: "npm:^5.6.3"
+  languageName: unknown
+  linkType: soft
 
 "astro@npm:4.16.10":
   version: 4.16.10
@@ -7562,28 +7592,6 @@ __metadata:
   checksum: 10c0/6bd6cca8cda502ef50e05353fd25de0df8c704ffc43ada7e0a9cf9a5d4f4e12520485d80e0b77cec8a21f6c3909042fcf732aa9281e5dbb98cc9384a138b2578
   languageName: node
   linkType: hard
-
-"wix-cli-test2@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "wix-cli-test2@workspace:."
-  dependencies:
-    "@astrojs/check": "npm:^0.9.4"
-    "@astrojs/react": "npm:^3.6.2"
-    "@astrojs/tailwind": "npm:^5.1.2"
-    "@tailwindcss/container-queries": "npm:^0.1.1"
-    "@tailwindcss/typography": "npm:^0.5.15"
-    "@wix/astro-internal": "https://cdn.dev.wixpress.com/@wix/astro-internal/4a6e599e853b4fab9f4d36484b7ae498eb48d975c9967be66ae28fba.tar.gz"
-    "@wix/cli": "npm:^1.1.52"
-    "@wix/data": "npm:1.0.168"
-    "@wix/ecom": "npm:1.0.806"
-    "@wix/redirects": "npm:1.0.60"
-    "@wix/sdk": "npm:^1.14.2"
-    "@wix/stores": "npm:1.0.280"
-    astro: "npm:4.16.10"
-    tailwindcss: "npm:^3.4.14"
-    typescript: "npm:^5.6.3"
-  languageName: unknown
-  linkType: soft
 
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0, wrap-ansi@npm:^7.0.0":
   version: 7.0.0
