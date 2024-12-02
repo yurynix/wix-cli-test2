@@ -23,3 +23,13 @@ jobs:
           yarn wix login --api-key $CLI_API_KEY
         env:
           CLI_API_KEY: ${{ secrets.CLI_API_KEY }}
+      - name: CLI pull env
+        run: |
+          yarn wix astro pull-env --prod
+      - name: Build
+        run: |
+          yarn build
+      - name: Deploy
+        run: |
+          yarn wix astro deploy --prod
+      - run: echo "💡 Deployed to prod"
