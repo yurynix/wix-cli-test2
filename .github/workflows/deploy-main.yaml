@@ -59,8 +59,10 @@ jobs:
         id: deploy-preview
         if: github.ref_name != 'main' && github.ref_name != 'master'
         run: |
-          output=$(yarn wix astro deploy --env pr-$PR_NUMBER)
-          echo "deploy-output=${output}" >> "$GITHUB_OUTPUT"
+          delimiter="$(openssl rand -hex 8)"
+          echo "output<<${delimiter}" >> "${GITHUB_OUTPUT}"
+          yarn wix astro deploy --env pr-$PR_NUMBER >> "${GITHUB_OUTPUT}"
+          echo "${delimiter}" >> "${GITHUB_OUTPUT}"
 
       - name: Comment PR with deploy preview output
         if: github.ref_name != 'main' && github.ref_name != 'master'
