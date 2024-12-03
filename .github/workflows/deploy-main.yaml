@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - "*" # Triggers on all branches for push events
-  pull_request:
-    branches:
-      - "*" # Triggers on all branches for pull request events
 jobs:
   deploy-to-prod:
     runs-on: ubuntu-latest
