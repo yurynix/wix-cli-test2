@@ -20,39 +20,45 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Workaround for Wix CLI
-        run: mkdir -p ~/.wix/auth && echo $USER_AUTH_ACCOUNT > ~/.wix/auth/account.json
+      - name: Auth CLI
+        run: |
+          yarn wix login --api-key $CLI_API_KEY
         env:
-          USER_AUTH_ACCOUNT: ${{ secrets.USER_AUTH_ACCOUNT }}
+          CLI_API_KEY: ${{ secrets.CLI_API_KEY }}
 
       - name: CLI pull env
         if: github.event_name != 'pull_request'
         run: |
-          yarn wix astro pull-env --prod
+          yarn wix astro pull-env production
 
       - name: CLI pull env
         if: github.event_name == 'pull_request'
         run: |
-          yarn wix astro pull-env
+          yarn wix astro pull-env pr-$PR_NUMBER
+        env:
+          PR_NUMBER: ${{ github.event.number }}
 
       - name: Build
         run: |
           yarn build
 
-      - name: Deploy PROD
+      - name: Deploy production
         if: github.event_name != 'pull_request'
         run: |
           yarn wix astro deploy --prod
 
-      - name: Deploy Preview
+      - name: Deploy preview
+        id: deploy-preview
         if: github.event_name == 'pull_request'
         run: |
-          yarn wix astro deploy
+          {
+            yarn wix astro deploy
+          } >> "$GITHUB_OUTPUT"
 
-      - name: Comment PR with deploy preview link
+      - name: Comment PR with deploy preview output
         if: github.event_name == 'pull_request'
         uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
-            _(execution **${{ github.run_id }}** / attempt **${{ github.run_attempt }}**)_
-          comment-tag: deploy-preview-link
+             ${{ join(steps.deploy-preview.outputs.output, ' ') }}
+          comment-tag: deploy-preview-output
