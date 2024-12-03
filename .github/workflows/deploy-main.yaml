@@ -71,3 +71,4 @@ jobs:
           message: |
              ${{ join(steps.deploy-preview.outputs.output, ' ') }}
           comment-tag: deploy-preview-output
+          pr-number: ${{ steps.get-pr.outputs.PR_NUMBER }}
