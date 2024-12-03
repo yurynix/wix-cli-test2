@@ -21,7 +21,7 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Workaround for Wix CLI
-        run: echo $USER_AUTH_ACCOUNT > ~/.wix/auth/account.json
+        run: mkdir -p ~/.wix/auth && echo $USER_AUTH_ACCOUNT > ~/.wix/auth/account.json
         env:
           USER_AUTH_ACCOUNT: ${{ secrets.USER_AUTH_ACCOUNT }}
 
