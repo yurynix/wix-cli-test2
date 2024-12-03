@@ -1634,16 +1634,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wix/cli-astro-internal@https://cdn.dev.wixpress.com/@wix/cli-astro-internal/de8bfb065925453dd82045a1eb887bd3ae2b1890d73093aa170a6d8a.tar.gz":
-  version: 0.0.0-de8bfb065925453dd82045a1eb887bd3ae2b1890d73093aa170a6d8a
-  resolution: "@wix/cli-astro-internal@https://cdn.dev.wixpress.com/@wix/cli-astro-internal/de8bfb065925453dd82045a1eb887bd3ae2b1890d73093aa170a6d8a.tar.gz"
-  checksum: 10c0/0d1920033ed289c18d866d59e8ead61f70aab1a31bbc812725adaca5a72e75ad9716c11aec2e9cc2bf1d3d21c855f3fa264cebcddc60adc61895f27c34540dc3
+"@wix/cli-astro-internal@https://cdn.dev.wixpress.com/@wix/cli-astro-internal/126ccbf7eeb4f0cf7a62d2ed4f29e078dc5f8cbbbabaa49ac1cfc4cc.tar.gz":
+  version: 0.0.0-126ccbf7eeb4f0cf7a62d2ed4f29e078dc5f8cbbbabaa49ac1cfc4cc
+  resolution: "@wix/cli-astro-internal@https://cdn.dev.wixpress.com/@wix/cli-astro-internal/126ccbf7eeb4f0cf7a62d2ed4f29e078dc5f8cbbbabaa49ac1cfc4cc.tar.gz"
+  checksum: 10c0/d64b981884354873fdefb9eef054b4dd4c920bdd4da65317e824ed41c7247cd851b8c35f61223598dae5b963ec6b9f5d0f48e534c4fb815c930b5f5261244508
   languageName: node
   linkType: hard
 
-"@wix/cli@https://cdn.dev.wixpress.com/@wix/cli/ca4b75d68c38d44d9b04d85be13066240be0f69078aafeb23cd0abc2.tar.gz":
-  version: 0.0.0-ca4b75d68c38d44d9b04d85be13066240be0f69078aafeb23cd0abc2
-  resolution: "@wix/cli@https://cdn.dev.wixpress.com/@wix/cli/ca4b75d68c38d44d9b04d85be13066240be0f69078aafeb23cd0abc2.tar.gz"
+"@wix/cli@https://cdn.dev.wixpress.com/@wix/cli/6aee899bc8ae6cee92e343b47afeb202fc174a027dedb05475d3e034.tar.gz":
+  version: 0.0.0-6aee899bc8ae6cee92e343b47afeb202fc174a027dedb05475d3e034
+  resolution: "@wix/cli@https://cdn.dev.wixpress.com/@wix/cli/6aee899bc8ae6cee92e343b47afeb202fc174a027dedb05475d3e034.tar.gz"
   dependencies:
     fsevents: "npm:^2.3.2"
     node-gyp: "npm:^8.4.1"
@@ -1652,7 +1652,7 @@ __metadata:
       optional: true
   bin:
     wix: bin/wix.cjs
-  checksum: 10c0/205b4a273d110bdb4e12aaae34b5e65b45dea75678c38a936c838991c6b35712b0ba5dc5c04265178a6abfc7cfbbf24ba8c1d7db1684cfb7ca2804f64ef1df82
+  checksum: 10c0/25bc68201ee0ea1ade2f9642479b885bc08a52e2eec467d3742227cd85b4caa971b9673cf96864b6c64e093e48fd0089d0cbd4c1e6ddfac7aaead5f523278c56
   languageName: node
   linkType: hard
 
@@ -2783,8 +2783,8 @@ __metadata:
     "@tailwindcss/container-queries": "npm:^0.1.1"
     "@tailwindcss/typography": "npm:^0.5.15"
     "@wix/astro-internal": "https://cdn.dev.wixpress.com/@wix/astro-internal/4a6e599e853b4fab9f4d36484b7ae498eb48d975c9967be66ae28fba.tar.gz"
-    "@wix/cli": "https://cdn.dev.wixpress.com/@wix/cli/ca4b75d68c38d44d9b04d85be13066240be0f69078aafeb23cd0abc2.tar.gz"
-    "@wix/cli-astro-internal": "https://cdn.dev.wixpress.com/@wix/cli-astro-internal/de8bfb065925453dd82045a1eb887bd3ae2b1890d73093aa170a6d8a.tar.gz"
+    "@wix/cli": "https://cdn.dev.wixpress.com/@wix/cli/6aee899bc8ae6cee92e343b47afeb202fc174a027dedb05475d3e034.tar.gz"
+    "@wix/cli-astro-internal": "https://cdn.dev.wixpress.com/@wix/cli-astro-internal/126ccbf7eeb4f0cf7a62d2ed4f29e078dc5f8cbbbabaa49ac1cfc4cc.tar.gz"
     "@wix/data": "npm:1.0.168"
     "@wix/ecom": "npm:1.0.806"
     "@wix/redirects": "npm:1.0.60"

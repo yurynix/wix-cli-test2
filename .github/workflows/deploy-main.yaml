@@ -26,12 +26,12 @@ jobs:
           USER_AUTH_ACCOUNT: ${{ secrets.USER_AUTH_ACCOUNT }}
 
       - name: CLI pull env
-        if: github.event_name == 'pull_request'
+        if: github.event_name != 'pull_request'
         run: |
           yarn wix astro pull-env --prod
 
       - name: CLI pull env
-        if: github.event_name != 'pull_request'
+        if: github.event_name == 'pull_request'
         run: |
           yarn wix astro pull-env
 
