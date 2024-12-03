@@ -10,43 +10,52 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
           cache: 'yarn'
+
       - name: Install dependencies
         run: yarn --frozen-lockfile
+
       - name: Workaround for Wix CLI
         run: echo $USER_AUTH_ACCOUNT > ~/.wix/auth/account.json
         env:
           USER_AUTH_ACCOUNT: ${{ secrets.USER_AUTH_ACCOUNT }}
+
       - name: Auth CLI
         run: |
           yarn wix login --api-key $CLI_API_KEY
         env:
           CLI_API_KEY: ${{ secrets.CLI_API_KEY }}
+
       - name: CLI pull env
         if: github.event_name == 'pull_request'
         run: |
           yarn wix astro pull-env --prod
+
       - name: CLI pull env
         if: github.event_name != 'pull_request'
         run: |
           yarn wix astro pull-env
+
       - name: Build
         run: |
           yarn build
+
       - name: Deploy PROD
         if: github.event_name != 'pull_request'
         run: |
           yarn wix astro deploy --prod
+
       - name: Deploy Preview
         if: github.event_name == 'pull_request'
         run: |
           yarn wix astro deploy
-     - name: Comment PR with deploy preview link
+
+      - name: Comment PR with deploy preview link
         if: github.event_name == 'pull_request'
         uses: thollander/actions-comment-pull-request@v3
         with:
