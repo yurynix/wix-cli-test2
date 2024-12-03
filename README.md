@@ -1,3 +1,5 @@
+test
+
 # Astro Starter Kit: Minimal
 
 ```sh
