@@ -1,4 +1,4 @@
-name: Deploy
+name: Wixstro
 
 on: 
   pull_request:
@@ -15,7 +15,7 @@ jobs:
             name: Head Commit
             env-name: ${{ github.event.pull_request.head.ref }}
     uses: ./.github/workflows/wixstro-preview.yaml
-    name: Deploy Preview of ${{ matrix.name }}
+    name: Preview of ${{ matrix.name }}
     with:
       name: ${{ matrix.env-name }}
       ref: ${{ github.context.ref }}
