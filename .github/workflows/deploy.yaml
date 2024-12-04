@@ -17,7 +17,7 @@ jobs:
     uses: ./.github/workflows/wixstro-preview.yaml
     name: Preview of ${{ matrix.name }}
     with:
-      name: ${{ matrix.env-name }}
+      env-name: ${{ matrix.env-name }}
       title: ${{ matrix.title }}
       ref: ${{ github.context.ref }}
     secrets:
