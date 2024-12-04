@@ -3,7 +3,10 @@ name: Wixstro Preview
 on:
   workflow_call:
     inputs:
-      name:
+      env-name:
+        required: true
+        type: string
+      title:
         required: true
         type: string
       ref:
@@ -40,7 +43,7 @@ jobs:
 
       - name: CLI pull env
         run: |
-          yarn wix astro pull-env ${{ inputs.name }}
+          yarn wix astro pull-env ${{ inputs.env-name }}
 
       - name: Build
         run: |
@@ -54,12 +57,12 @@ jobs:
           yarn wix astro deploy --env $ENV_NAME >> "${GITHUB_OUTPUT}"
           echo "${delimiter}" >> "${GITHUB_OUTPUT}"
         env:
-          ENV_NAME: ${{ inputs.name }}
+          ENV_NAME: ${{ inputs.env-name }}
 
       - name: Comment PR with deploy output
         uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
-            ## Deployment result for ${{ inputs.name }}
+            ## Deployment - ${{ inputs.title }}
             ${{ join(steps.deploy-preview.outputs.output, ' ') }}
-          comment-tag: deploy-preview-output-${{ inputs.name }}
+          comment-tag: deploy-preview-output-${{ inputs.env-name }}
