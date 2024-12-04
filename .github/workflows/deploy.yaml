@@ -15,7 +15,7 @@ jobs:
             title: Head Commit
             env-name: ${{ github.event.pull_request.head.ref }}
     uses: ./.github/workflows/wixstro-preview.yaml
-    name: Preview of ${{ matrix.name }}
+    name: Preview of ${{ matrix.title }}
     with:
       env-name: ${{ matrix.env-name }}
       title: ${{ matrix.title }}
