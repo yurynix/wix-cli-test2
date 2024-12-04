@@ -12,7 +12,6 @@ on:
     secrets:
       wix-api-key:
         required: true
-        type: string
 
 jobs:
   deploy:
