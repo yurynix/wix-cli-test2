@@ -61,5 +61,4 @@ jobs:
         with:
           message: |
              ${{ join(steps.deploy-preview.outputs.output, ' ') }}
-          comment-tag: deploy-preview-output
-          pr-number: ${{ github.event.number }}
+          comment-tag: deploy-preview-output-${{ inputs.name }}
