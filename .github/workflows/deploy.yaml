@@ -9,10 +9,15 @@ jobs:
       matrix:
         include: 
           - ref: ${{ github.context.ref }}
+            name: Merge Commit
+            env-name: pr-${{ github.event.number }}
           - ref: ${{ github.event.pull_request.head.sha }}
+            name: Head Commit
+            env-name: ${{ github.event.pull_request.head.ref }}
     uses: ./.github/workflows/wixstro-preview.yaml
+    name: Deploy Preview of ${{ matrix.name }}
     with:
-      name: pr-${{ github.event.number }}
+      name: ${{ matrix.env-name }}
       ref: ${{ github.context.ref }}
     secrets:
       wix-api-key: ${{ secrets.CLI_API_KEY }}
