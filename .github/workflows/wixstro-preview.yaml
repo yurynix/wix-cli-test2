@@ -20,7 +20,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
-    environment: ${{ inputs.env-name }}
+    environment: 
+      name: ${{ inputs.env-name }}
+      url: ${{ inputs.env-name }}-hanut-yurym4.wix-sites.dev
+
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
