@@ -6,6 +6,9 @@ on:
 jobs:
   deploy:
     uses: ./.github/workflows/wixstro-preview.yaml
+    strategy:
+      matrix:
+        ref: [${{ github.context.ref }}, ${{ github.event.pull_request.head.sha }}]
     with:
       name: pr-${{ github.event.number }}
       ref: ${{ github.context.ref }}
