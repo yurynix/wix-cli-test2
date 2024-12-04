@@ -46,6 +46,8 @@ jobs:
         if: github.ref_name != 'main' && github.ref_name != 'master'
         run: |
           yarn wix astro pull-env pr-$PR_NUMBER
+        env:
+          PR_NUMBER: ${{ steps.get-pr.outputs.pr_number }}          
 
       - name: Build
         run: |
@@ -64,6 +66,8 @@ jobs:
           echo "output<<${delimiter}" >> "${GITHUB_OUTPUT}"
           yarn wix astro deploy --env pr-$PR_NUMBER >> "${GITHUB_OUTPUT}"
           echo "${delimiter}" >> "${GITHUB_OUTPUT}"
+        env:
+          PR_NUMBER: ${{ steps.get-pr.outputs.pr_number }}
 
       - name: Comment PR with deploy preview output
         if: github.ref_name != 'main' && github.ref_name != 'master'
