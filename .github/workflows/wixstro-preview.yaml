@@ -60,5 +60,6 @@ jobs:
         uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
-             ${{ join(steps.deploy-preview.outputs.output, ' ') }}
+            ## Deployment result for ${{ inputs.name }}
+            ${{ join(steps.deploy-preview.outputs.output, ' ') }}
           comment-tag: deploy-preview-output-${{ inputs.name }}
