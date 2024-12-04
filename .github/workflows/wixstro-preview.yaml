@@ -1,0 +1,57 @@
+name: Wixstro Preview
+
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+      ref:
+        required: true
+        type: string
+    secrets:
+      wix-api-key:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+          uses: actions/checkout@v4
+          with:
+            ref: ${{ inputs.ref }}
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Auth CLI
+        run: |
+          yarn wix login --api-key $CLI_API_KEY
+        env:
+          CLI_API_KEY: ${{ secrets.wix-api-key }}
+
+      - name: CLI pull env
+        run: |
+          yarn wix astro pull-env ${{ inputs.name }}
+
+      - name: Build
+        run: |
+          yarn build
+
+      - name: Deploy
+        id: deploy-preview
+        run: |
+          delimiter="$(openssl rand -hex 8)"
+          echo "output<<${delimiter}" >> "${GITHUB_OUTPUT}"
+          yarn wix astro deploy --env $ENV_NAME >> "${GITHUB_OUTPUT}"
+          echo "${delimiter}" >> "${GITHUB_OUTPUT}"
+        env:
+          ENV_NAME: ${{ inputs.name }}
