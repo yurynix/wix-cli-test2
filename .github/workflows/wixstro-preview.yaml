@@ -22,7 +22,7 @@ jobs:
     name: Deploy
     environment: 
       name: ${{ inputs.env-name }}
-      url: ${{ inputs.env-name }}-hanut-yurym4.wix-sites.dev
+      url: https://${{ inputs.env-name }}-hanut-yurym4.wix-sites.dev
 
     steps:
       - name: Check out repository code
