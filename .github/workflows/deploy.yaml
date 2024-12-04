@@ -9,4 +9,6 @@ jobs:
     with:
       name: pr-${{ github.event.number }}
       ref: ${{ github.context.ref }}
+    secrets:
+      wix-api-key: ${{ secrets.CLI_API_KEY }}
 
