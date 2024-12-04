@@ -7,7 +7,7 @@ jobs:
   deploy:
     strategy:
       matrix:
-        target: [dev, stage, prod]
+        target: [${{ github.context.ref }}, ${{ github.event.pull_request.head.sha }}]
     uses: ./.github/workflows/wixstro-preview.yaml
     with:
       name: pr-${{ github.event.number }}
