@@ -1,0 +1,41 @@
+name: Wixstro Pull Request Previews
+
+on:
+  workflow_call:
+    inputs:
+      env-name:
+        required: true
+        type: string
+      title:
+        required: true
+        type: string
+      ref:
+        required: true
+        type: string
+    secrets:
+      wix-api-key:
+        required: true
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/wixstro-deploy.yaml
+    name: Preview of ${{ inputs.title }}
+    with:
+      env-name: ${{ inputs.env-name }}
+      title: ${{ inputs.title }}
+      ref: ${{ inputs.ref }}
+    secrets:
+      wix-api-key: ${{ secrets.CLI_API_KEY }}
+
+  pr-comment:
+    runs-on: ubuntu-latest
+    name: Preview Comment on Pull Request
+    needs: deploy
+    steps:
+      - name: Comment PR with deploy output
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            ## Deployment - ${{ inputs.title }}
+            ${{ join(needs.deploy.outputs.deploy-result, ' ') }}
+          comment-tag: deploy-preview-output-${{ inputs.env-name }}
