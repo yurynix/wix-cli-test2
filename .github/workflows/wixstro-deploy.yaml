@@ -23,7 +23,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy
+    name: Build & Deploy
     outputs:
       deploy-result: ${{ steps.deploy-preview.outputs.output }}
     environment: 
@@ -68,3 +68,12 @@ jobs:
           echo "${delimiter}" >> "${GITHUB_OUTPUT}"
         env:
           ENV_NAME: ${{ inputs.env-name }}
+
+      - name: Comment PR with deploy output
+        if: github.event_name == 'pull_request'
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: |
+            ## Deployment - ${{ inputs.title }}
+            ${{ join(steps.deploy-preview.outputs.output, ' ') }}
+          comment-tag: deploy-preview-output-${{ inputs.env-name }}
