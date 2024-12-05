@@ -1,12 +1,25 @@
-name: Deploy
+name: Wixstro
 
 on: 
   pull_request:
 
 jobs:
   deploy:
-    uses: ./.github/workflows/wixstro-preview.yml
+    strategy:
+      matrix:
+        include: 
+          - ref: ${{ github.context.ref }}
+            title: Merge Commit
+            env-name: pr-${{ github.event.number }}
+          - ref: ${{ github.event.pull_request.head.sha }}
+            title: Head Commit
+            env-name: ${{ github.event.pull_request.head.ref }}
+    uses: ./.github/workflows/wixstro-preview.yaml
+    name: Preview of ${{ matrix.title }}
     with:
-      name: pr-${{ github.event.number }}
-      ref: {{ github.context.ref }}
+      env-name: ${{ matrix.env-name }}
+      title: ${{ matrix.title }}
+      ref: ${{ github.context.ref }}
+    secrets:
+      wix-api-key: ${{ secrets.CLI_API_KEY }}
 
