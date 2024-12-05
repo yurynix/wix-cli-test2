@@ -24,6 +24,7 @@ jobs:
       wix-api-key: ${{ secrets.CLI_API_KEY }}
 
   pr-comment:
+    runs-on: ubuntu-latest
     name: Preview Comment on Pull Request
     needs: deploy
     steps:
