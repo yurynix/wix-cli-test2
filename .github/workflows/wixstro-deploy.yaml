@@ -1,4 +1,4 @@
-name: Wixstro Preview
+name: Wixstro Deploy
 
 on:
   workflow_call:
@@ -15,11 +15,17 @@ on:
     secrets:
       wix-api-key:
         required: true
+    outputs:
+      deploy-result:
+        description: "Output of deploy command"
+        value: ${{ jobs.deploy.outputs.deploy-result }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
+    outputs:
+      deploy-result: ${{ steps.deploy-preview.outputs.output }}
     environment: 
       name: ${{ inputs.env-name }}
       url: https://${{ inputs.env-name }}-hanut-yurym4.wix-sites.dev
@@ -62,11 +68,3 @@ jobs:
           echo "${delimiter}" >> "${GITHUB_OUTPUT}"
         env:
           ENV_NAME: ${{ inputs.env-name }}
-
-      - name: Comment PR with deploy output
-        uses: thollander/actions-comment-pull-request@v3
-        with:
-          message: |
-            ## Deployment - ${{ inputs.title }}
-            ${{ join(steps.deploy-preview.outputs.output, ' ') }}
-          comment-tag: deploy-preview-output-${{ inputs.env-name }}
