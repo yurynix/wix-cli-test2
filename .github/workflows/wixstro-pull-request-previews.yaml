@@ -25,7 +25,7 @@ jobs:
       title: ${{ inputs.title }}
       ref: ${{ inputs.ref }}
     secrets:
-      wix-api-key: ${{ secrets.CLI_API_KEY }}
+      wix-api-key: ${{ secrets.wix-api-key }}
 
   pr-comment:
     runs-on: ubuntu-latest
